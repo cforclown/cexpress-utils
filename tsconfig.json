@@ -1,12 +1,10 @@
 {
   "include": [
     "src",
-    "__mock__",
     "jest.config.js"
   ],
-  "exclude": [
-    "node_modules",
-    "build"
+  "exclude": [ 
+    "node_modules" 
   ],
   "compilerOptions": {
     "target": "es2021",
@@ -26,9 +24,8 @@
     "forceConsistentCasingInFileNames": true,
     "rootDirs": [
       "src",
-      "__mock__"
     ],
-    "outDir": "build",
+    "outDir": "lib",
     "declaration": true,
     "strict": true
   }

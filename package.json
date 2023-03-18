@@ -2,17 +2,37 @@
   "name": "cbase-utils",
   "version": "1.0.0",
   "description": "Base utils for ExpressJS framework",
+  "author": "github@cforclown - Hafis Alrizal",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cforclown/cbase-utils#readme"
+  },
+  "homepage": "https://github.com/cforclown/cbase-utils#readme",
+  "bugs": {
+    "url": "https://github.com/cforclown/cbase-utils/issues"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "Base",
+    "Utils"
+  ],
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
     "build": "tsc",
-    "lint": "eslint \"src/**/*.{js,ts}\" \"__mock__/**/*.{js,ts}\"",
+    "lint": "eslint \"src/**/*.{js,ts}\"",
     "lint:check": "npm run lint",
     "lint:format": "npm run lint -- --fix",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "prepare": "npm run build",
+    "prepublishOnly ": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "author": "github@cforclown - Hafis Alrizal",
-  "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
