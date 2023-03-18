@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
 import { dro } from './dro';
 import { HttpCodes } from './exceptions';
-import { ErrorLogger } from './common';
+import { ErrorLogger } from './error-logger';
 import { RequestWithUser } from '../types/request';
 
 export function checkAuthorization (resourceType: string, action: string, forbiddenMsg = `You don't have the authority to '${action}' on resource '${resourceType}'`) {

@@ -1,4 +1,4 @@
-import { isArray, isString } from '.';
+import { isArray, isString } from './type-checker';
 
 describe('type-checker', () => {
   afterEach(() => {

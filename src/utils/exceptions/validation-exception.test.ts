@@ -2,7 +2,7 @@ import { ValidationException } from './validation-exception';
 import { EXCEPTIONS } from '.';
 
 const mockLoggerError = jest.fn();
-jest.mock('../common/logger', () => ({
+jest.mock('../logger', () => ({
   Logger: {
     error: (message: string): void => mockLoggerError(message)
   }

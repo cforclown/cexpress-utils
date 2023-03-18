@@ -1,4 +1,4 @@
-import { Environment } from '.';
+import { Environment } from './environment';
 
 describe('environment', () => {
   afterEach(() => {

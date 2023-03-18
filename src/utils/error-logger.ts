@@ -1,5 +1,5 @@
 import { Logger } from './logger';
-import { Environment } from '.';
+import { Environment } from './environment';
 
 export async function ErrorLogger (err: Record<string, any>): Promise<void> {
   if (Environment.getNodeEnv() === 'test') {

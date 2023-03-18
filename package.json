@@ -1,6 +1,6 @@
 {
   "name": "cbase-utils",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Base utils for ExpressJS framework",
   "author": "github@cforclown - Hafis Alrizal",
   "license": "ISC",

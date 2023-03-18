@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
 import { dro } from './dro';
 import { HttpCodes, RestApiException } from './exceptions';
-import { ErrorLogger } from './common';
+import { ErrorLogger } from './error-logger';
 import { JsonWebTokenError, NotBeforeError, TokenExpiredError } from 'jsonwebtoken';
 import { RequestWithUser } from '../types/request';
 

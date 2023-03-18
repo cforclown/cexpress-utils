@@ -1,9 +1,10 @@
 import { NextFunction, Response } from 'express';
 import { JsonWebTokenError, NotBeforeError, TokenExpiredError, verify } from 'jsonwebtoken';
 import { RequestWithUser } from '../../types/request';
-import { Environment, Logger } from '../common';
+import { Logger } from '../logger';
 import { dro } from '../dro';
 import { HttpCodes } from '../exceptions';
+import { Environment } from '../environment';
 
 export function validateAuthorization (excludePaths?: string[]) {
   return (req: RequestWithUser, res: Response, next: NextFunction): any => {

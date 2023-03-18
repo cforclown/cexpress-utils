@@ -1,4 +1,5 @@
-import { Environment, Logger, LogLevel } from '../common';
+import { Environment } from '../environment';
+import { Logger, LogLevel } from '../logger';
 
 export interface IException {
   code: string;

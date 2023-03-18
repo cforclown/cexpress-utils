@@ -1,6 +1,6 @@
 import { AES, enc, SHA512 } from 'crypto-js';
 import { customAlphabet } from 'nanoid';
-import { Environment } from './common';
+import { Environment } from './environment';
 
 export const generateId = function (): string {
   return customAlphabet('0123456789abcdefghijklmnopqrstuvwxyz', 16)();
