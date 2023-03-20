@@ -11,3 +11,4 @@ export * from './password-utils';
 export * from './type-checker';
 export * from './validate-dto';
 export * from './validate-schema';
+export * from './get-tenant-db-name';

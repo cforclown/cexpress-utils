@@ -1,14 +1,14 @@
 export interface ITenant {
-  _id: string;
-  tenantKey: string;
-  tenantName: string;
-  tenantProfile?: string;
+  id: string;
+  shortName: string;
+  name: string;
+  profile?: string;
 }
 
-export interface ICreateTenantPayload extends Omit<ITenant, '_id'> {}
+export interface ICreateTenantPayload extends Omit<ITenant, 'id'> {}
 
 export interface IUpdateTenantPayload {
-  _id: string;
-  tenantName?: string;
-  tenantProfile?: string;
+  id: string;
+  name?: string;
+  profile?: string;
 }
