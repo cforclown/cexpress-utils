@@ -12,11 +12,17 @@ export function getEnvOrThrow (environmentVariableName: string): string {
 
 export const Environment = {
   getNodeEnv: (): string => getEnvOrThrow('NODE_ENV'),
+
+  getUserManagementHostname: (): string => getEnvOrThrow('USER_MANAGEMENT_HOSTNAME'),
+
+  getTenantDataDBUri: (): string => getEnvOrThrow('TENANT_DATA_DB_URI'),
+  getTenantDataDBNamePrefix: (): string => getEnvOrThrow('TENANT_DATA_DB_NAME_PREFIX'),
+
   getSessionSecret: (): string => getEnvOrThrow('SESSION_SECRET'),
 
   getAccessTokenSecret: (): string => getEnvOrThrow('ACCESS_TOKEN_SECRET'),
   getRefreshTokenSecret: (): string => getEnvOrThrow('REFRESH_TOKEN_SECRET'),
 
-  getEncryptionAlgorithm: (): string => process.env.ENCRYPTION_ALGORITHM ? process.env.ENCRYPTION_ALGORITHM : 'aes-256-cbc',
-  getEncryptionKey: (): string => process.env.ENCRYPTION_KEY ? process.env.ENCRYPTION_KEY : 'BUTTERDATA_TENANT_MANAGEMENT_ENCRYPTION_KEY'
+  getEncryptionAlgorithm: (): string => getEnvOrThrow('ENCRYPTION_ALGORITHM'),
+  getEncryptionKey: (): string => getEnvOrThrow('ENCRYPTION_KEY')
 };

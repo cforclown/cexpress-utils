@@ -9,7 +9,8 @@
   "compilerOptions": {
     "target": "es2021",
     "lib": [
-      "DOM"
+      "DOM",
+      "ES2021.String"
     ],
     "typeRoots": [
       "./types",
