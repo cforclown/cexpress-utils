@@ -15,9 +15,6 @@ export const Environment = {
 
   getUserManagementHostname: (): string => getEnvOrThrow('USER_MANAGEMENT_HOSTNAME'),
 
-  getTenantDataDBUri: (): string => getEnvOrThrow('TENANT_DATA_DB_URI'),
-  getTenantDataDBNamePrefix: (): string => getEnvOrThrow('TENANT_DATA_DB_NAME_PREFIX'),
-
   getSessionSecret: (): string => getEnvOrThrow('SESSION_SECRET'),
 
   getAccessTokenSecret: (): string => getEnvOrThrow('ACCESS_TOKEN_SECRET'),

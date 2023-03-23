@@ -3,6 +3,8 @@ import { NextFunction, Response } from 'express';
 import { dro } from './dro';
 import { HttpCodes } from './exceptions';
 import { RequestWithUser } from '../types/request';
+import { Logger } from './logger';
+import { Environment } from './environment';
 
 export function validateDto ({
   source,
@@ -13,6 +15,10 @@ export function validateDto ({
   return (req: RequestWithUser, res: Response, next: NextFunction): void => {
     const { error, value } = schema.validate(req[source], validateOptions);
     if (error) {
+      const env = Environment.getNodeEnv().toLowerCase();
+      if (env === 'test' || env === 'dev' || env === 'development') {
+        Logger.danger(error.message);
+      }
       res.status(HttpCodes.BadRequest).send(dro.error(error.message));
       return;
     }
