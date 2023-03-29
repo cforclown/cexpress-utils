@@ -11,11 +11,7 @@ export function getEnvOrThrow (environmentVariableName: string): string {
 }
 
 export const Environment = {
-  getNodeEnv: (): string => getEnvOrThrow('NODE_ENV'),
-
-  getUserManagementHostname: (): string => getEnvOrThrow('USER_MANAGEMENT_HOSTNAME'),
-
-  getSessionSecret: (): string => getEnvOrThrow('SESSION_SECRET'),
+  getNodeEnv: (): string => process.env.NODE_ENV ?? 'development',
 
   getAccessTokenSecret: (): string => getEnvOrThrow('ACCESS_TOKEN_SECRET'),
   getRefreshTokenSecret: (): string => getEnvOrThrow('REFRESH_TOKEN_SECRET'),

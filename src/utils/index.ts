@@ -11,3 +11,4 @@ export * from './encryption';
 export * from './type-checker';
 export * from './validate-dto';
 export * from './validate-schema';
+export * from './call-api';
