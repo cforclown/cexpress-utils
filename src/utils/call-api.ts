@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/named
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+/* eslint-disable import/named */
+import axios, { AxiosRequestConfig } from 'axios';
 import { HttpCodes, RestApiException } from './exceptions';
 
 export type APIEndpointMethods = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS'
@@ -24,7 +24,7 @@ export interface IAPIEndpoint {
   headers?: Record<string, any>;
 }
 
-export const axiosFetch = (endpoint: IAPIEndpoint, body: any): Promise<AxiosResponse<any, any>> => {
+export const axiosFetch = (endpoint: IAPIEndpoint, body: any): Promise<any> => {
   const config = endpoint.headers ? { headers: endpoint.headers } : undefined;
   return AxiosFetch[endpoint.method ?? 'GET']({
     url: endpoint.url,
