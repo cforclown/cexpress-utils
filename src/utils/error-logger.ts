@@ -1,7 +1,7 @@
 import { Logger } from './logger';
 import { Environment } from './environment';
 
-export async function ErrorLogger (err: Record<string, any>): Promise<void> {
+export async function ErrorLogger (err: Record<string, any>, printTrace = true): Promise<void> {
   if (Environment.getNodeEnv() === 'test') {
     return;
   }
@@ -9,12 +9,11 @@ export async function ErrorLogger (err: Record<string, any>): Promise<void> {
   Logger.error('=========================================');
   try {
     Logger.danger(`MESSAGE: ${err.message ?? ''}`);
-    if (err.stack) {
+    if (printTrace && err.stack) {
       Logger.warn('STACKTRACE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       Logger.warn(err.stack);
       Logger.warn('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
     }
-    Logger.success('ERROR SAVED');
   } catch (err) {
     if (err instanceof Error) {
       Logger.error(err.message);
