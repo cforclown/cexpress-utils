@@ -4,6 +4,12 @@ import { HttpCodes, RestApiException } from './exceptions';
 
 export type APIEndpointMethods = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS'
 
+export interface IAPIEndpoint {
+  url: string;
+  method?: APIEndpointMethods;
+  headers?: Record<string, any>;
+}
+
 export interface IAxiosFetchArgs {
   url: string;
   body?: any;
@@ -17,12 +23,6 @@ export const AxiosFetch = {
   DELETE: (args: IAxiosFetchArgs): Promise<any> => axios.delete(args.url, args.config),
   OPTIONS: (args: IAxiosFetchArgs): Promise<any> => axios.options(args.url, args.config)
 };
-
-export interface IAPIEndpoint {
-  url: string;
-  method?: APIEndpointMethods;
-  headers?: Record<string, any>;
-}
 
 export const axiosFetch = (endpoint: IAPIEndpoint, body: any): Promise<any> => {
   const config = endpoint.headers ? { headers: endpoint.headers } : undefined;
