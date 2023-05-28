@@ -1,17 +1,8 @@
-import { decrypt, encrypt, generateId, hashPassword } from '.';
+import { decrypt, encrypt, hashPassword } from '.';
 
 describe('encryption', () => {
   afterEach(() => {
     jest.clearAllMocks();
-  });
-
-  describe('generate-id', () => {
-    it('should successfully generate random id', () => {
-      const id = generateId();
-      expect(id).toBeTruthy();
-      expect(typeof id).toEqual('string');
-      expect(id).toEqual(expect.stringMatching(/^[a-z0-9]+$/i));
-    });
   });
 
   describe('hash-password', () => {

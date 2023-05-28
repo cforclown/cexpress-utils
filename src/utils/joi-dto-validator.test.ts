@@ -1,7 +1,7 @@
 import { mockRequest, mockResponse } from 'jest-mock-req-res';
 import Joi from 'joi';
-import { validateBody, validateParams, validateQuery } from './validate-dto';
 import { HttpCodes } from './exceptions';
+import { dtoValidator } from './joi-dto-validator';
 
 describe('validate-dto', () => {
   const res = mockResponse({});
@@ -31,7 +31,7 @@ describe('validate-dto', () => {
         }
       });
 
-      const event = validateBody(mockRequestBodyDto);
+      const event = dtoValidator.body(mockRequestBodyDto);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).toHaveBeenCalled();
@@ -45,7 +45,7 @@ describe('validate-dto', () => {
         }
       });
 
-      const event = validateBody(mockRequestBodyDto);
+      const event = dtoValidator.body(mockRequestBodyDto);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).not.toHaveBeenCalled();
@@ -63,7 +63,7 @@ describe('validate-dto', () => {
         }
       });
 
-      const event = validateParams(Joi.object());
+      const event = dtoValidator.params(Joi.object());
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).toHaveBeenCalled();
@@ -72,7 +72,7 @@ describe('validate-dto', () => {
     it('should send error response with bad request code when validating request params', () => {
       const req = mockRequest({ params: {} });
 
-      const event = validateParams(mockParamsDto);
+      const event = dtoValidator.params(mockParamsDto);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).not.toHaveBeenCalled();
@@ -90,7 +90,7 @@ describe('validate-dto', () => {
         }
       });
 
-      const event = validateQuery(mockParamsDto);
+      const event = dtoValidator.query(mockParamsDto);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).toHaveBeenCalled();
@@ -99,7 +99,7 @@ describe('validate-dto', () => {
     it('should send error response with bad request code when validating request queries', () => {
       const req = mockRequest({ query: {} });
 
-      const event = validateQuery(mockParamsDto);
+      const event = dtoValidator.query(mockParamsDto);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).not.toHaveBeenCalled();
