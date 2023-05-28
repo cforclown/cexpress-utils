@@ -31,7 +31,9 @@ describe('request-handler', () => {
     expect(res.status.mock.calls[0][0]).toEqual(HttpCodes.NotFound);
     expect(res.send).toHaveBeenCalled();
     expect(res.send.mock.calls[0][0]).toEqual({
-      data: null, error: 'not found'
+      data: null,
+      error: 'not found',
+      code: 'BAD_REQUEST'
     });
   });
 
@@ -44,7 +46,9 @@ describe('request-handler', () => {
     expect(res.status.mock.calls[0][0]).toEqual(HttpCodes.Internal);
     expect(res.send).toHaveBeenCalled();
     expect(res.send.mock.calls[0][0]).toEqual({
-      data: null, error: 'undefined'
+      data: null,
+      error: 'undefined',
+      code: 'BAD_REQUEST'
     });
   });
 });
