@@ -1,6 +1,6 @@
 import { decrypt, encrypt, hashPassword } from '.';
 
-describe('encryption', () => {
+describe('password-utils', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });

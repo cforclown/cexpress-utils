@@ -1,20 +1,19 @@
+import { HttpStatusCode } from 'axios';
 import { mockRequest, mockResponse } from 'jest-mock-req-res';
+import { validateBody, validateParams, validateQuery } from './validate-dto';
 import Joi from 'joi';
-import { HttpCodes } from './exceptions';
-import { dtoValidator } from './joi-dto-validator';
 
 describe('validate-dto', () => {
   const res = mockResponse({});
   const mockNext = { next: (): boolean => true };
   const spyNext = jest.spyOn(mockNext, 'next');
 
-  const mockRequestBodyDto = Joi.object({
-    email: Joi.string().email().required(),
-    fullname: Joi.string().required(),
-    phone: Joi.string()
+  const mockSchema1 = Joi.object({
+    id: Joi.string().required()
   });
-  const mockParamsDto = Joi.object({
-    objectId: Joi.string().required()
+  const mockSchema2 = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required()
   });
 
   afterEach(() => {
@@ -25,32 +24,31 @@ describe('validate-dto', () => {
     it('should successfully validate body', () => {
       const req = mockRequest({
         body: {
-          email: 'email@email.com',
-          fullname: 'fullname',
-          phone: 'xxxxxxxxxxxx'
+          username: 'username',
+          password: 'password'
         }
       });
 
-      const event = dtoValidator.body(mockRequestBodyDto);
+      const event = validateBody(mockSchema2);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).toHaveBeenCalled();
     });
 
-    it('should send error response with bad request code if required field is not provided', () => {
+    it('should send error response with bad request code', () => {
       const req = mockRequest({
         body: {
-          email: 'email@email.com',
-          phone: 'xxxxxxxxxxxx'
+          username: null,
+          password: 'password'
         }
       });
 
-      const event = dtoValidator.body(mockRequestBodyDto);
+      const event = validateBody(mockSchema2);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).not.toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
-      expect(res.status.mock.calls[0][0]).toEqual(HttpCodes.BadRequest);
+      expect(res.status.mock.calls[0][0]).toEqual(HttpStatusCode.BadRequest);
       expect(res.send).toHaveBeenCalled();
     });
   });
@@ -59,11 +57,11 @@ describe('validate-dto', () => {
     it('should successfully validate params', () => {
       const req = mockRequest({
         params: {
-          objectId: 'objectId'
+          id: 'object-id'
         }
       });
 
-      const event = dtoValidator.params(Joi.object());
+      const event = validateParams(mockSchema1);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).toHaveBeenCalled();
@@ -72,12 +70,12 @@ describe('validate-dto', () => {
     it('should send error response with bad request code when validating request params', () => {
       const req = mockRequest({ params: {} });
 
-      const event = dtoValidator.params(mockParamsDto);
+      const event = validateParams(mockSchema1);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).not.toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
-      expect(res.status.mock.calls[0][0]).toEqual(HttpCodes.BadRequest);
+      expect(res.status.mock.calls[0][0]).toEqual(HttpStatusCode.BadRequest);
       expect(res.send).toHaveBeenCalled();
     });
   });
@@ -86,11 +84,11 @@ describe('validate-dto', () => {
     it('should successfully validate query', () => {
       const req = mockRequest({
         query: {
-          objectId: 'objectId'
+          id: 'object-id'
         }
       });
 
-      const event = dtoValidator.query(mockParamsDto);
+      const event = validateQuery(mockSchema1);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).toHaveBeenCalled();
@@ -99,12 +97,12 @@ describe('validate-dto', () => {
     it('should send error response with bad request code when validating request queries', () => {
       const req = mockRequest({ query: {} });
 
-      const event = dtoValidator.query(mockParamsDto);
+      const event = validateQuery(mockSchema1);
       expect(typeof event).toBe('function');
       event(req, res, mockNext.next);
       expect(spyNext).not.toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
-      expect(res.status.mock.calls[0][0]).toEqual(HttpCodes.BadRequest);
+      expect(res.status.mock.calls[0][0]).toEqual(HttpStatusCode.BadRequest);
       expect(res.send).toHaveBeenCalled();
     });
   });

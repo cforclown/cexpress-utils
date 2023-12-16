@@ -1,8 +1,5 @@
 process.env.NODE_ENV='test';
-process.env.SESSION_SECRET='SESSION_SECRET';
-
-process.env.ACCESS_TOKEN_SECRET = 'ACCESS_TOKEN_SECRET';
-process.env.REFRESH_TOKEN_SECRET = 'REFRESH_TOKEN_SECRET';
+process.env.LOG_LEVEL='test';
 
 process.env.ENCRYPTION_ALGORITHM='aes-256-cbc';
-process.env.ENCRYPTION_KEY = 'ENCRYPTION_KEY';
+process.env.ENCRYPTION_KEY = 'mock-encryption-key';

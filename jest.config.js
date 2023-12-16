@@ -1,14 +1,15 @@
 module.exports = {
   moduleFileExtensions: ['js', 'json', 'ts'],
-  moduleNameMapper: {
-    axios: 'axios/dist/node/axios.cjs'
-  },
   testRegex: 'src/.+(test)\\.ts$',
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest'
+    '^.+\\.(t|j)s$': ['ts-jest', {
+      isolatedModules: true
+    }]
   },
   coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: [],
+  coveragePathIgnorePatterns: [
+    'src/base'
+  ],
   coverageReporters: ['text-summary', 'text', 'html'],
   coverageThreshold: {
     global: {
@@ -20,10 +21,5 @@ module.exports = {
   },
   testEnvironment: 'node',
   testTimeout: 99999,
-  globals: {
-    'ts-jest': {
-      isolatedModules: true
-    }
-  },
   setupFiles: ['<rootDir>/jestSetup.ts']
 };
