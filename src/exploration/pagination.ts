@@ -20,7 +20,7 @@ export interface IPaginationRes extends IPaginationReq {
   pageCount: number;
 }
 
-export const PaginationReq = Joi.object({
+export const PaginationReqSchema = Joi.object({
   page: Joi.number().required(),
   limit: Joi.number().required(),
   sort: Joi.object({
@@ -29,7 +29,7 @@ export const PaginationReq = Joi.object({
   })
 });
 
-export const PaginationReqSwaggerSchemas = {
+export const paginationSwagger = {
   paginationPayload: {
     page: { type: 'number', required: true },
     limit: { type: 'number', required: true },

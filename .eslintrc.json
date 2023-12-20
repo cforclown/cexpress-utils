@@ -6,8 +6,6 @@
   },
   "extends": [
     "standard"
-    // "eslint:recommended",
-    // "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -33,11 +31,54 @@
       }
     ],
     "accessor-pairs": "error",
-    "no-undef": 0,
     "import/named": "error",
     "object-curly-spacing": [
       "error",
       "always"
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
+    "curly": [
+      "error",
+      "multi-line"
+    ],
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "new-cap": "error",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "memberSyntaxSortOrder": [
+          "all",
+          "single",
+          "multiple",
+          "none"
+        ]
+      }
+    ],
+    "max-classes-per-file": [
+      "error",
+      1
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 160
+      }
     ],
     "array-bracket-newline": [
       "error",
@@ -52,18 +93,6 @@
         }
       }
     ],
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
-    "curly": [
-      "error",
-      "multi-line"
-    ],
-    "eqeqeq": [
-      "error",
-      "smart"
-    ],
     "function-call-argument-newline": [
       "off"
     ],
@@ -71,10 +100,7 @@
       "error",
       "consistent"
     ],
-    "max-classes-per-file": [
-      "error",
-      1
-    ],
+    "no-undef": 0,
     "no-cond-assign": [
       "error",
       "except-parens"
@@ -99,32 +125,12 @@
     "no-useless-catch": "error",
     "no-useless-return": "error",
     "no-var": "error",
+    "no-useless-constructor": "off",
+    "no-dupe-class-members": "off",
     "one-var-declaration-per-line": "error",
     "prefer-const": "error",
     "prefer-destructuring": "error",
     "prefer-regex-literals": "error",
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "new-cap": "error",
-    "sort-imports": [
-      "error",
-      {
-        "ignoreCase": true,
-        "ignoreDeclarationSort": true,
-        "memberSyntaxSortOrder": [
-          "all",
-          "single",
-          "multiple",
-          "none"
-        ]
-      }
-    ],
     "@typescript-eslint/ban-ts-comment": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/interface-name-prefix": 0,
@@ -146,6 +152,27 @@
     ],
     "@typescript-eslint/naming-convention": [
       "off"
+    ],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "comma",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": true
+        },
+        "overrides": {
+          "interface": {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": true
+            }
+          }
+        }
+      }
     ]
   }
 }

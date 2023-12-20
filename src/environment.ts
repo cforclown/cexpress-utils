@@ -6,7 +6,6 @@ export function getEnvOrThrow (varName: string): string {
   if (!value) {
     throw new Error(`Environment variable ${varName} not set!`);
   }
-
   return value;
 }
 
@@ -15,7 +14,6 @@ export function getOptionalEnv <T> (varName: string, defaultValue: T): string | 
   if (!value) {
     return defaultValue;
   }
-
   return value;
 }
 
@@ -23,9 +21,6 @@ export const Environment = {
   getNodeEnv: (): EnvNames => getEnvOrThrow('NODE_ENV'),
   getLogLevel: (): ELogLevel => {
     const logLevel = getOptionalEnv('LOG_LEVEL', 'prod');
-    if (!logLevel) {
-      return ELogLevel.PRODUCTION;
-    }
 
     switch (logLevel) {
       case 'test':

@@ -8,7 +8,7 @@ export function validateDto ({
   schema,
   validateOptions,
   replaceSource
-}: { source: 'body' | 'params' | 'query', schema: Schema, validateOptions?: ValidationOptions, replaceSource?: boolean; }) {
+}: { source: 'body' | 'params' | 'query', schema: Schema, validateOptions?: ValidationOptions, replaceSource?: boolean, }) {
   return (req: Request, res: Response, next: NextFunction): void => {
     const { error, value } = schema.validate(req[source], validateOptions);
     if (error) {

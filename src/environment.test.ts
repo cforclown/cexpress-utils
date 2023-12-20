@@ -52,8 +52,11 @@ describe('environment', () => {
       expect(Environment.getLogLevel()).toEqual(ELogLevel.PRODUCTION);
     });
 
-    it('should return ELogLevel.PRODUCTION when LOG_LEVEL not set', () => {
+    it('should return ELogLevel.PRODUCTION when LOG_LEVEL not set or invalid', () => {
       process.env.LOG_LEVEL = '';
+      expect(Environment.getLogLevel()).toEqual(ELogLevel.PRODUCTION);
+
+      process.env.LOG_LEVEL = 'invalid';
       expect(Environment.getLogLevel()).toEqual(ELogLevel.PRODUCTION);
     });
   });

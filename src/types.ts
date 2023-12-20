@@ -1,6 +1,6 @@
 
 export interface Response<T> {
-  data: T,
+  data: T;
   error: string | object | [] | null | undefined;
 }
 

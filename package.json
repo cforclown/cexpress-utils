@@ -1,16 +1,16 @@
 {
-  "name": "cbase-utils",
-  "version": "1.5.0",
+  "name": "cexpress-utils",
+  "version": "1.6.1",
   "description": "Base utils for ExpressJS framework",
   "author": "Hafis Alrizal",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cforclown/cbase-utils"
+    "url": "https://github.com/cforclown/cexpress-utils"
   },
-  "homepage": "https://github.com/cforclown/cbase-utils#readme",
+  "homepage": "https://github.com/cforclown/cexpress-utils#readme",
   "bugs": {
-    "url": "https://github.com/cforclown/cbase-utils/issues"
+    "url": "https://github.com/cforclown/cexpress-utils/issues"
   },
   "files": [
     "lib/**/*"
@@ -42,7 +42,8 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mongoose": "^8.0.3",
-    "nanoid": "^5.0.4"
+    "nanoid": "^5.0.4",
+    "socket.io": "^4.7.2"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.0.2",
@@ -71,7 +72,6 @@
     ]
   },
   "volta": {
-    "node": "18.15.0",
-    "npm": "9.5.0"
+    "node": "20.10.0"
   }
 }

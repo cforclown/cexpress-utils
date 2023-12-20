@@ -15,7 +15,7 @@ export abstract class BaseDataAccessObject<T> {
     return this.model.find({ }).exec();
   }
 
-  async create (payload: Record<string, any> & { id?: string; }): Promise<T> {
+  async create (payload: Record<string, any> & { id?: string, }): Promise<T> {
     return this.model.create({ ...payload });
   }
 
