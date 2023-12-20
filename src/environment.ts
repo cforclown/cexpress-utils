@@ -35,11 +35,5 @@ export const Environment = {
         return ELogLevel.PRODUCTION;
     }
   },
-  getPort: (): string => getEnvOrThrow('PORT'),
-  getAllowedOrigins: (): string[] => {
-    const appHost = getEnvOrThrow('ALLOWED_ORIGINS');
-    return appHost.split(',').filter(h => !!h);
-  },
-  getEncryptionAlgorithm: (): string => getOptionalEnv('ENCRYPTION_ALGORITHM', 'aes-256-cbc'),
   getEncryptionKey: (): string => getEnvOrThrow('ENCRYPTION_KEY')
 };

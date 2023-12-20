@@ -1,7 +1,7 @@
-import { HttpStatusCode } from 'axios';
 import { mockRequest, mockResponse } from 'jest-mock-req-res';
 import { validateBody, validateParams, validateQuery } from './validate-dto';
 import Joi from 'joi';
+import { HttpStatusCode } from './exceptions';
 
 describe('validate-dto', () => {
   const res = mockResponse({});

@@ -1,7 +1,6 @@
-import { HttpStatusCode } from 'axios';
 import { mockRequest, mockResponse } from 'jest-mock-req-res';
 import { RequestHandler } from './request-handler';
-import { RestApiException } from './exceptions';
+import { HttpStatusCode, RestApiException } from './exceptions';
 import { Logger } from './logger';
 
 describe('request-handler', () => {

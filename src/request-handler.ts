@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { HttpStatusCode } from 'axios';
 import { dro } from './dro';
-import { RestApiException } from './exceptions';
+import { HttpStatusCode, RestApiException } from './exceptions';
 import { Logger } from './logger';
 
 export function RequestHandler (event: (req: Request, res: Response, next: NextFunction) => Promise<any>) {

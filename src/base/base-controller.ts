@@ -1,7 +1,6 @@
 import { Request } from 'express';
-import { RestApiException } from '../exceptions';
+import { HttpStatusCode, RestApiException } from '../exceptions';
 import { BaseService } from './base-service';
-import { HttpStatusCode } from 'axios';
 
 export abstract class BaseController<T> {
   protected readonly service: BaseService<T>;

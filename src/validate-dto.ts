@@ -1,7 +1,7 @@
 import { Schema, ValidationOptions } from 'joi';
 import { NextFunction, Request, Response } from 'express';
-import { HttpStatusCode } from 'axios';
 import { dro } from './dro';
+import { HttpStatusCode } from './exceptions';
 
 export function validateDto ({
   source,

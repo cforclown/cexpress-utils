@@ -1,5 +1,4 @@
-import { HttpStatusCode } from 'axios';
-import { RestApiException } from './rest-api-exception';
+import { HttpStatusCode, RestApiException } from './rest-api-exception';
 import { BaseException } from './base-exception';
 
 describe('request-error', () => {
