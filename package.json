@@ -1,6 +1,6 @@
 {
   "name": "cexpress-utils",
-  "version": "1.6.3",
+  "version": "1.6.5",
   "description": "Base utils for ExpressJS framework",
   "author": "Hafis Alrizal",
   "license": "ISC",
@@ -72,6 +72,6 @@
     ]
   },
   "volta": {
-    "node": "20.10.0"
+    "node": "20.14.0"
   }
 }

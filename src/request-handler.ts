@@ -3,8 +3,12 @@ import { dro } from './dro';
 import { HttpStatusCode, RestApiException } from './exceptions';
 import { Logger } from './logger';
 
-export function RequestHandler (event: (req: Request, res: Response, next: NextFunction) => Promise<any>) {
-  return async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+export function RequestHandler<
+  ReqParams = any,
+  ReqQuery = any,
+  ReqBody = any
+> (event: (req: Request<ReqParams, any, ReqBody, ReqQuery>, res: Response, next: NextFunction) => Promise<any>) {
+  return async (req: Request<ReqParams, any, ReqBody, ReqQuery>, res: Response, next: NextFunction): Promise<any> => {
     try {
       const data = await event(req, res, next);
       res.send(dro.response(data));
